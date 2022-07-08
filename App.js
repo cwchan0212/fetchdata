@@ -42,21 +42,29 @@ function App() {
         }, []);
         return { data, error, loaded };
     };
-   
-   
+
+
     const { data, error, loaded } = useAsyncStuff()
+    console.log(data)
 
-    return (
- 
-        <div>
-            123
+    if (error) {
+        return (
+            <div>{error}</div>
+        )        
+    } else {
 
-        </div>
+            for (const key in data) {
+                if (data.hasOwnProperty(key)) {
+                    console.log(key, data[key])
+                    return (
+                    <h1>{key} {data[key]}</h1>
+                    )
+                }
+            }
 
 
+    }
 
-    )
-    // const { data, error, loaded } = useAsyncStuff()
 
     // if (loaded) {
     //     return error ? (
